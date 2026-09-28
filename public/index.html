@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <base href="/">
+  <script>if (location.pathname.replace(/\/+$/, '') === '/perfil') document.documentElement.classList.add('profile-route')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f2">
+  <link rel="icon" type="image/png" href="/assets/kzinflix-logo-oficial.png?v=1">
+  <title>Kzinflix — Manhwa, Mangá e Anime</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="catalog.css?v=full-route-28">
+  <link rel="stylesheet" href="motion.css?v=reader-motion-2">
+  <link rel="stylesheet" href="reader-theme.css?v=full-route-5">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <div class="catalog-page" id="catalogPage">
+    <header class="catalog-header">
+      <div class="brand-menu">
+        <a class="catalog-logo" id="homeLink" href="#inicio" aria-label="Kzinflix, início" style="display:inline-flex;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:9px;white-space:nowrap"><img src="/assets/kzinflix-logo-oficial.png?v=1" alt="" width="38" height="38" style="display:block;flex:none;width:38px;height:38px;max-width:38px;object-fit:cover"><span style="display:inline-block;white-space:nowrap">ZINFLIX</span></a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="siteNav"><span></span><span></span><span></span></button>
+        <nav class="catalog-nav" id="siteNav" aria-label="Navegação principal" hidden>
+          <a href="#inicio">Início</a><a href="#sobre">Sobre</a>
+        </nav>
+      </div>
+      <div class="catalog-header-actions"><label class="catalog-search"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Pesquisar..." aria-label="Pesquisar títulos"></label><button class="upload-button" id="uploadButton" hidden>＋ Nova publicação</button><button class="account-button" id="accountButton"><span>Entrar</span></button></div>
+    </header>
+    <section class="catalog-hero" id="inicio">
+      <div class="hero-content"><span class="catalog-badge" id="featuredCategory">KZINFLIX ORIGINAL</span><p class="featured-eyebrow" id="featuredEyebrow">HISTÓRIAS INDEPENDENTES</p><h1 id="featuredTitle">Feito por quem<br>ama contar.</h1><p id="featuredDescription">Leia e assista a obras originais publicadas pelos nossos queridos artistas.</p><div class="featured-meta" id="featuredMeta" hidden></div><div class="hero-buttons"><button class="hero-primary" id="featuredOpen" hidden>▶ &nbsp;Ler agora</button><button class="hero-upload" id="heroUpload" hidden>＋ &nbsp;Publicar obra</button><a class="hero-secondary" href="#lancamentos">Explorar lançamentos</a></div></div>
+      <div class="featured-art" id="featuredArt" aria-label="Obra em destaque" hidden><img id="featuredCover" alt=""><div class="featured-art-shade"></div><div class="featured-controls"><div class="featured-pagination"><button id="featuredPrev" type="button" aria-label="Obra anterior">‹</button><span id="featuredPosition"></span><button id="featuredNext" type="button" aria-label="Próxima obra">›</button></div><div class="featured-progress" role="progressbar" aria-label="Tempo até a próxima obra"><span id="featuredProgress"></span></div></div></div>
+    </section>
+    <div class="type-shelf" aria-label="Filtrar obras por categoria"><button class="type-chip selected" data-type="all">Todas as obras</button><button class="type-chip" data-type="manga">Mangás</button><button class="type-chip" data-type="manhwa">Manhwas</button><button class="type-chip" data-type="anime">Animes</button><span class="type-shelf-note">Novas histórias para acompanhar</span></div>
+    <div class="anime-shelf" id="animeShelf" aria-label="Filtrar animes" hidden><span>ANIMES</span><button class="anime-chip selected" data-anime-format="all">Todos</button><button class="anime-chip" data-anime-format="series">Padrão</button><button class="anime-chip" data-anime-format="movie">Filmes</button></div>
+    <main class="catalog-main">
+      <section class="catalog-section" id="lancamentos"><div class="catalog-section-head"><div><span class="section-kicker">ACABARAM DE CHEGAR</span><h2>Últimas atualizações</h2></div><span id="releaseCount">0 publicações</span></div><div class="catalog-grid" id="releaseGrid"></div><div class="empty-releases" id="emptyReleases"><span class="empty-icon">✳</span><h3 id="emptyReleasesTitle">Ainda não há lançamentos</h3><p id="emptyReleasesDescription">Entre na sua conta para acompanhar as novidades da coleção.</p><button id="emptyUpload" hidden>＋ Publicar primeira obra</button></div></section>
+      <section class="catalog-section" id="explorar"><div class="catalog-section-head"><h2>Explorar por gênero</h2></div><div class="genre-list"><button>Ação</button><button>Aventura</button><button>Romance</button><button>Fantasia</button><button>Isekai</button><button>Comédia</button><button>Drama</button><button>Terror</button><button>Escolar</button></div></section>
+      <section class="catalog-section about-section" id="sobre" aria-labelledby="aboutTitle"><div class="catalog-section-head"><h2 id="aboutTitle">Sobre</h2></div><div class="about-credits"><article class="about-credit about-credit-th"><div class="about-banner"><img src="/assets/th-banner.gif?v=1" alt="Banner do Th"></div><div class="about-person"><img class="about-photo" src="/assets/th-foto.webp?v=1" alt="Foto do Th"><div><h3>Th</h3><p><strong>Desenvolvedor</strong><br>Responsável por criar e desenvolver a plataforma Kzinflix.</p></div></div></article><article class="about-credit about-credit-kzin"><div class="about-banner"><img src="/assets/kzin-banner.gif?v=1" alt="Banner do Kzin"></div><div class="about-person"><img class="about-photo" src="/assets/kzin-foto.png?v=1" alt="Foto do Kzin"><div><h3>Kzin</h3><p><strong>Dono do site</strong><br>Idealizador da Kzinflix e deste espaço para publicar histórias originais.</p></div></div></article></div></section>
+    </main>
+    <footer class="catalog-footer">© 2026 Kzinflix — Histórias originais, feitas por artistas independentes.<br><br>Os capítulos ficam disponíveis no catálogo para você ler quando quiser.</footer>
+  </div>
+  <main class="profile-page" id="profilePage" hidden>
+    <section class="profile-card" aria-labelledby="profileTitle">
+      <a class="profile-back" id="profileBack" href="/">← Voltar ao início</a>
+      <a class="profile-logo" href="/" id="profileLogo">KZINFLIX</a>
+      <span class="publish-kicker">SUA CONTA</span>
+      <h1 id="profileTitle">Personalize seu perfil</h1>
+      <p class="profile-optional-notice">A personalização é opcional. Você pode deixar tudo em branco e continuar.</p>
+      <form id="profileForm">
+        <label class="publish-label" for="profileDisplayName">Nome de exibição <span>(opcional)</span></label>
+        <input class="publish-input" id="profileDisplayName" maxlength="60" placeholder="Como quer aparecer no site?">
+        <span class="publish-label">Foto do perfil <span>(opcional)</span></span>
+        <input id="profileAvatarInput" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+        <button class="profile-avatar-picker" id="profileAvatarPicker" type="button">
+          <img id="profileAvatarPreview" alt="Prévia da foto do perfil" hidden>
+          <span id="profileAvatarPlaceholder">＋ Escolher imagem</span>
+        </button>
+        <button class="profile-avatar-reset" id="profileAvatarReset" type="button" hidden>Usar foto da conta Google</button>
+        <p class="profile-image-hint">JPG, PNG ou WebP · até 10 MB</p>
+        <p class="profile-error" id="profileError" role="alert" hidden></p>
+        <button class="profile-ok" id="profileOk" type="submit">OK</button>
+        <button class="profile-signout" id="profileSignOut" type="button">Sair da conta</button>
+      </form>
+    </section>
+  </main>
+  <div class="manga-detail-backdrop" id="mangaDetailDialog" hidden>
+    <section class="manga-detail-window" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <header class="manga-window-bar"><button id="closeMangaDetails" class="detail-back-button" type="button">← Voltar</button><span>DETALHES DA OBRA</span><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span></header>
+      <div class="manga-detail-content">
+        <div class="manga-detail-cover-wrap"><img id="detailCover" class="manga-detail-cover" alt="Capa do mangá"></div>
+        <div class="manga-detail-info"><span id="detailCategory" class="catalog-badge">MANGÁ</span><h1 id="detailTitle"></h1><p id="detailAuthor" class="detail-author"></p><p id="detailGenre" class="detail-genre"></p><p id="detailDate" class="detail-date"></p><button id="detailRead" class="detail-read-button" type="button">▶ &nbsp; Abrir</button><input id="appendEpisodeInput" type="file" accept="video/mp4,.mp4,video/webm,.webm" multiple hidden><button id="detailAddEpisodes" class="detail-add-episodes" type="button" hidden>＋ Adicionar episódios</button><p id="episodeUpdateStatus" class="episode-update-status" role="status" hidden></p></div>
+      </div>
+    </section>
+  </div>
+  <div class="auth-backdrop" id="authDialog" hidden>
+    <section class="auth-dialog" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <button class="auth-close" id="closeAuth" aria-label="Fechar">×</button>
+      <div class="auth-emblem"><img src="/assets/kzinflix-logo-oficial.png?v=1" alt="Logo Kzinflix" width="48" height="48" style="display:block;width:48px;height:48px;max-width:48px;object-fit:cover"></div>
+      <h2 id="authTitle">Entre na Kzinflix</h2>
+      <p class="auth-description" id="authDescription">Use sua conta para publicar mangás e gerenciar seus lançamentos.</p>
+      <div class="auth-profile" id="authProfile" hidden><img id="authAvatar" alt=""><div><strong id="authName"></strong><span id="authEmail"></span></div></div>
+      <div class="auth-options" id="authOptions">
+        <div id="googleSignInContainer"></div>
+      </div>
+      <p class="auth-notice" id="authNotice" role="status"></p>
+      <button class="signout-button" id="signOut" hidden>Sair da conta</button>
+      <p class="auth-privacy">A Kzinflix não recebe nem armazena sua senha.</p>
+    </section>
+  </div>
+  <div class="app-shell" id="appShell">
+    <header class="topbar">
+      <a class="reader-back" id="readerBack" href="/" aria-label="Voltar para os detalhes da obra">← <span>Voltar</span></a>
+      <a class="brand" id="brandHome" href="#inicio" aria-label="Kzinflix, voltar ao início"><span class="brand-mark"><img src="/assets/kzinflix-logo-oficial.png?v=1" alt="" width="29" height="29" style="display:block;width:29px;height:29px;max-width:29px;object-fit:cover"></span><span>Kzinflix<span class="brand-dot">.</span></span></a>
+      <div class="reading-title"><strong id="fileName">Mangá</strong></div>
+    </header>
+
+    <main class="workspace">
+      <section class="reader" id="reader">
+        <div class="canvas-area" id="canvasArea">
+          <div class="loading" id="loading"><span class="spinner"></span><span>Preparando a leitura…</span></div>
+          <div class="error-card" id="errorCard" hidden><span>Não foi possível abrir este capítulo.</span><button id="errorRetry" type="button">Voltar ao catálogo</button></div>
+          <div class="page-wrap" id="pageWrap" hidden><canvas id="mangaCanvas"></canvas></div>
+          <div class="anime-player" id="animePlayer" hidden>
+            <video class="manga-video" id="mangaVideo" playsinline preload="metadata"></video>
+            <div class="player-topline"><span class="player-live-dot"></span><strong id="playerTitle">ANIME</strong><span id="playerEpisodeLabel">EP 1</span></div>
+            <div class="player-jump-feedback" id="playerJumpFeedback" aria-live="polite"></div>
+            <div class="player-controls" id="playerControls">
+              <label class="player-seek"><span id="playerCurrentTime">0:00</span><input id="playerSeek" type="range" min="0" max="1000" value="0" aria-label="Posição do vídeo"><span id="playerDuration">0:00</span></label>
+              <div class="player-control-row">
+                <button class="player-icon-button player-main-play" id="playerPlay" type="button" aria-label="Reproduzir">▶</button>
+                <button class="player-icon-button" id="playerPreviousEpisode" type="button" aria-label="Episódio anterior">|◀</button>
+                <button class="player-skip-button" id="playerRewind" type="button" aria-label="Voltar 10 segundos">↶ <span>10</span></button>
+                <span class="player-episode-title" id="playerEpisodeTitle">Reproduzindo</span>
+                <button class="player-skip-button" id="playerForward" type="button" aria-label="Avançar 10 segundos"><span>10</span> ↷</button>
+                <button class="player-icon-button" id="playerNextEpisode" type="button" aria-label="Próximo episódio">▶|</button>
+                <button class="player-icon-button" id="playerFullscreen" type="button" aria-label="Tela cheia">⛶</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reader-bottom" id="readerBottom">
+          <button class="page-nav" id="prevPage" type="button" aria-label="Página anterior" disabled><span class="nav-arrow" aria-hidden="true">←</span><span>Anterior</span></button>
+          <div class="page-counter"><span class="counter-label">PÁGINA</span><label><input id="pageInput" type="number" min="1" value="1" aria-label="Número da página" disabled><span>/</span><b id="pageCount">—</b></label></div>
+          <button class="page-nav" id="nextPage" type="button" aria-label="Próxima página" disabled><span>Próxima</span><span class="nav-arrow" aria-hidden="true">→</span></button>
+        </div>
+      </section>
+    </main>
+    <div class="toast" id="toast" role="status"></div>
+  </div>
+  <div class="publish-backdrop" id="publishDialog" hidden>
+    <section class="publish-dialog" role="dialog" aria-modal="true" aria-labelledby="publishTitle">
+      <header class="publish-dialog-head"><div><span class="publish-kicker">NOVO LANÇAMENTO</span><h2 id="publishTitle">Publicar obra</h2></div><button type="button" class="publish-close" id="closePublish" aria-label="Fechar">×</button></header>
+      <p class="selected-chapter" id="selectedChapter">Capítulo selecionado</p>
+      <input id="fileInput" type="file" accept="application/pdf,.pdf,video/mp4,.mp4,video/webm,.webm" hidden>
+      <form id="publishForm">
+        <label class="publish-label" for="releaseName">Nome da obra</label>
+        <input class="publish-input" id="releaseName" name="name" type="text" maxlength="100" placeholder="Ex.: A Última Estrela" required>
+        <label class="publish-label" for="releaseAuthor">Nome do autor</label>
+        <input class="publish-input" id="releaseAuthor" name="authorName" type="text" maxlength="100" placeholder="Ex.: Thiago Corretto" required>
+        <label class="publish-label" for="releaseType">Categoria</label>
+        <select class="publish-input" id="releaseType" name="type" required><option value="" selected disabled>Escolha uma categoria</option><option value="manga">Mangá</option><option value="manhwa">Manhwa</option><option value="anime">Anime</option></select>
+        <div class="anime-publish-options" id="animePublishOptions" hidden><label class="publish-label" for="animeFormat">Tipo de anime</label><select class="publish-input" id="animeFormat" name="animeFormat"><option value="series">Padrão (série)</option><option value="movie">Filme</option></select><div class="episode-adder" id="episodeAdder"><input id="episodeInput" type="file" accept="video/mp4,.mp4,video/webm,.webm" multiple hidden><button class="episode-picker" id="episodePicker" type="button">＋ Adicionar próximos vídeos</button><p id="episodeHint">Os vídeos serão exibidos na ordem selecionada. Máximo de 2 GB por envio.</p><ol class="episode-list" id="episodeList"></ol></div></div>
+        <label class="publish-label" for="releaseSlug">URL da obra</label>
+        <div class="slug-field"><span id="releaseSlugPrefix">/manga/</span><input id="releaseSlug" name="slug" type="text" readonly></div>
+        <div class="publish-fields">
+          <div><span class="publish-label">Capa principal</span><input id="coverInput" type="file" accept="image/png,image/jpeg,image/webp" hidden><button type="button" class="cover-picker" id="coverPicker"><span id="coverPlaceholder">＋</span><img id="coverPreview" alt="Prévia da capa principal" hidden><span id="coverLabel">Escolher imagem</span></button></div>
+          <div><label class="publish-label" for="releaseGenre">Gênero</label><select class="publish-input" id="releaseGenre" name="genre" required><option value="" selected disabled>Escolha um gênero</option><option>Ação</option><option>Aventura</option><option>Comédia</option><option>Drama</option><option>Escolar</option><option>Fantasia</option><option>Isekai</option><option>Romance</option><option>Suspense</option><option>Terror</option><option>Outro</option></select></div>
+        </div>
+        <p class="publish-error" id="publishError" role="alert" hidden></p>
+        <div class="publish-actions"><button class="publish-cancel" id="cancelPublish" type="button">Cancelar</button><button class="publish-submit" id="publishSubmit" type="submit">Publicar</button></div>
+      </form>
+    </section>
+  </div>
+  <script type="module" src="app.js?v=chunked-upload-39"></script>
+</body>
+</html>

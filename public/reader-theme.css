@@ -1,0 +1,293 @@
+:root{
+  --reader-bg:#080d12;
+  --reader-panel:#101820;
+  --reader-panel-raised:#151f28;
+  --reader-line:#253744;
+  --reader-blue:#69c8f5;
+  --reader-blue-bright:#96ddff;
+  --reader-text:#edf7fc;
+  --reader-muted:#91a0aa;
+}
+
+.app-shell{background:var(--reader-bg);color:var(--reader-text)}
+.topbar,.toolbar,.reader-foot{background:linear-gradient(180deg,#111a22,#0e161d);border-color:var(--reader-line)}
+.topbar{box-shadow:0 5px 24px #0004}
+.brand{color:var(--reader-text)}
+.reader-back{display:inline-flex;align-items:center;gap:6px;flex:none;padding:8px 10px;border:1px solid #315365;border-radius:8px;background:#11232d;color:#bdeaff;font-size:12px;font-weight:700;text-decoration:none;transition:background .18s,border-color .18s,transform .18s}
+.reader-back:hover{transform:translateX(-2px);border-color:#69c8f5;background:#18384a}
+.brand-mark{overflow:hidden;background:#10202a;border:1px solid #31576b}
+.brand-dot{color:var(--reader-blue)}
+.topbar-center{color:var(--reader-muted)}
+.status-dot{background:var(--reader-blue);box-shadow:0 0 0 3px #69c8f51c,0 0 13px #69c8f570}
+.open-button,.primary-button{background:var(--reader-blue);color:#07131a;box-shadow:0 5px 18px #37a7dd20}
+.open-button:hover,.primary-button:hover{background:var(--reader-blue-bright);color:#06121a}
+.sidebar{background:#0d151c;border-color:var(--reader-line)}
+.sidebar-heading{color:#94a9b5}
+.icon-button{color:#a7bac5}
+.icon-button:hover:not(:disabled){background:#1a2933;color:#c7efff}
+.thumb-empty{color:#758792}
+.thumb-item{color:#9aaab3}
+.thumb-item:hover{background:#16232c}
+.thumb-item.active{border-color:#4ba9d2;background:#142631;color:#c8efff;box-shadow:inset 0 0 0 1px #69c8f51c}
+.thumb-item canvas{box-shadow:0 4px 14px #0008;border-radius:3px}
+.sidebar-footer{border-color:var(--reader-line);color:#83949e}
+.lock-icon{color:var(--reader-blue)}
+.toolbar{box-shadow:0 3px 14px #0003}
+.pdf-icon{border-color:#31576b;background:#11222d;color:var(--reader-blue)}
+.doc-text strong{color:#e4f2f8}
+.doc-text span,.page-total{color:#8fa0aa}
+.icon-button:disabled{opacity:.3}
+.icon-button:disabled:hover{background:transparent}
+.page-control input{border-color:#344954;background:#0b1218;color:#e5f4fa}
+.page-control input:focus{border-color:var(--reader-blue);box-shadow:0 0 0 3px #69c8f51a}
+.toolbar-divider{background:#2d414d}
+.zoom-label{color:#b5c7d0}
+.zoom-label:hover{color:var(--reader-blue-bright)}
+.reader-foot{color:#84949e}
+.keyboard-hint kbd{border-color:#344650;background:#17232b;color:#c0d2db}
+.canvas-area{background-color:#080e13;background-image:radial-gradient(#1d3542 .8px,transparent .8px);background-size:18px 18px}
+.canvas-area.dragging{background-color:#0d202a;outline-color:var(--reader-blue)}
+.welcome-card{max-width:470px;padding:23px 32px 34px;border:1px solid #1d3442;border-radius:22px;background:radial-gradient(ellipse at 50% 0%,#153043 0%,#101a22 54%,#0e161d 100%);box-shadow:0 24px 70px #0005, inset 0 1px #ffffff08}
+.welcome-art{filter:drop-shadow(0 14px 20px #0004)}
+.art-back{background:#183648}
+.art-page{border-color:#d5e8f1;background:#f7fbfd;box-shadow:0 12px 24px #0005}
+.art-fold{background:#d9edf5}
+.art-page i{background:#d7e4e9}
+.art-page b{background:#a8dff5}
+.art-spark,.spark-two{color:var(--reader-blue)}
+.eyebrow{color:#83c9e8}
+.eyebrow span{background:var(--reader-blue);box-shadow:0 0 10px #69c8f580}
+.welcome-card h1{color:var(--reader-text)}
+.welcome-card p,.drop-hint{color:#9aabb5}
+.primary-button{border-radius:9px;padding:13px 20px;font-weight:700}
+.drop-hint{margin-top:15px}
+.page-wrap{background:transparent}
+.manga-page{box-shadow:0 14px 40px #0008}
+.loading{color:#9aadb8}
+.spinner{border-color:#263d4a;border-top-color:var(--reader-blue)}
+.error-card{border-color:#573c43;background:#1c1317;color:#f0bdc2}
+.error-card button{color:var(--reader-blue)}
+.toast{border:1px solid #35566a;background:#12232d;color:#e2f5fc;box-shadow:0 12px 34px #0007}
+
+@media(max-width:760px){
+  .topbar{box-shadow:0 4px 18px #0005}
+  .welcome-card{padding:18px 20px 28px;border-radius:18px}
+}
+
+/* Leitura imersiva: páginas verticais, controles discretos e navegação fixa. */
+.app-shell{position:fixed;inset:0;height:100dvh;min-height:0;overflow:hidden}
+.topbar{position:fixed;z-index:100;inset:0 0 auto;height:58px;padding:0 18px}
+.reading-title{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(44vw,520px);display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0;text-align:center}
+.reading-title strong{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#edf7fc;font-size:13px;font-weight:700}
+.reading-title span{color:#8fa2ad;font-size:10px}
+.reader-actions{position:relative;display:flex;align-items:center;gap:7px;margin-left:auto}
+.reader-icon{width:36px;height:36px;display:grid;place-items:center;border:1px solid #2b414e;border-radius:9px;background:#111c24;color:#c4dce7;font:18px Arial,sans-serif;cursor:pointer;transition:background .18s,border-color .18s,color .18s}
+.reader-icon:hover,.reader-icon[aria-expanded="true"]{border-color:#4d91b0;background:#172b37;color:#a7e3ff}
+.reader-icon:disabled{opacity:.35;cursor:default}
+.publish-reader-button{font-size:23px;color:#8cdbff}
+.workspace{position:absolute;inset:58px 0 62px;display:block;min-height:0;overflow:hidden}
+.reader{position:relative;width:100%;height:100%;min-width:0;min-height:0}
+.canvas-area{position:absolute;inset:0;display:block;overflow:auto;overscroll-behavior:contain;padding:0;background-color:#080e13;background-image:radial-gradient(#1d3542 .8px,transparent .8px);background-size:18px 18px}
+.page-wrap{width:min(100%,850px);max-width:850px;margin:0 auto;display:flex;flex-direction:column;align-items:stretch;gap:0;background:transparent}
+.page-wrap[hidden]{display:none}
+.manga-page{width:100%;max-width:none;margin:0;border-bottom:1px solid #273944;background:#fff;line-height:0;box-shadow:0 8px 24px #0004}
+.manga-page canvas{display:block;max-width:100%;height:auto}
+.sidebar{display:none;position:fixed;z-index:61;inset:58px auto 62px 0;width:min(260px,82vw);height:auto;box-shadow:14px 0 45px #0009;border-right:1px solid #335163}
+.sidebar.open{display:flex}
+.sidebar-heading{height:48px;flex:none;padding:0 18px;border-bottom:1px solid #253744;color:#9fcde0;font-size:10px}
+.thumb-list{padding:12px 16px 18px}
+.sidebar-footer{flex:none;height:42px}
+.reader-drawer-backdrop{position:fixed;z-index:60;inset:58px 0 62px;border:0;background:#0008;backdrop-filter:blur(2px)}
+.reader-drawer-backdrop[hidden]{display:none!important}
+.reader-settings{position:absolute;top:47px;right:0;z-index:105;width:214px;padding:13px;border:1px solid #2b4859;border-radius:12px;background:rgba(13,22,29,.98);box-shadow:0 18px 50px #0009;backdrop-filter:blur(14px)}
+.reader-settings[hidden]{display:none!important}
+.settings-label{display:block;margin:0 0 10px;color:#89cdeb;font-size:9px;font-weight:800;letter-spacing:1.4px}
+.settings-zoom{display:flex;align-items:center;justify-content:space-between;padding:5px 0 10px;border-bottom:1px solid #253744}
+.settings-zoom .icon-button{width:32px;height:32px;border:1px solid #2b414e;background:#14222b;color:#cdebf7}
+.settings-zoom .zoom-label{min-width:60px;border:1px solid #2b414e;border-radius:7px;background:#101a21;color:#b6dced}
+.settings-action{width:100%;padding:10px 8px;border:0;border-radius:7px;background:transparent;color:#c0d0d8;text-align:left;font:12px 'DM Sans',sans-serif;cursor:pointer}
+.settings-action:hover:not(:disabled){background:#172a35;color:#a6e2ff}
+.settings-action:disabled{opacity:.35;cursor:default}
+.reader-bottom{position:fixed;z-index:110;inset:auto 0 0;height:62px;display:flex;align-items:center;justify-content:center;gap:clamp(14px,3vw,30px);padding:0 14px;border-top:1px solid #253b49;background:rgba(13,21,28,.97);box-shadow:0 -8px 28px #0005;backdrop-filter:blur(14px)}
+.page-nav{min-width:104px;height:38px;padding:0 13px;display:flex;align-items:center;justify-content:center;gap:7px;border:1px solid #304b5a;border-radius:9px;background:#14222b;color:#d4e8f1;font:600 12px 'DM Sans',sans-serif;cursor:pointer;transition:background .18s,border-color .18s,color .18s}
+.page-nav:hover:not(:disabled){border-color:#4a91b1;background:#19313e;color:#a9e4ff}
+.page-nav:disabled{opacity:.35;cursor:default}
+.page-counter{min-width:72px;display:flex;flex-direction:column;align-items:center;gap:3px}
+.counter-label{color:#718590;font-size:8px;font-weight:800;letter-spacing:1.2px}
+.page-counter label{display:flex;align-items:center;gap:7px;color:#9fb1ba;font-size:12px}
+.page-counter input{width:32px;height:25px;padding:0;border:1px solid #314956;border-radius:6px;outline:0;background:#0b141a;color:#e2f5fc;text-align:center;font:600 12px 'DM Sans',sans-serif;-moz-appearance:textfield}
+.page-counter input::-webkit-inner-spin-button,.page-counter input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.page-counter input:focus{border-color:#69c8f5;box-shadow:0 0 0 3px #69c8f51b}
+.page-counter b{font-weight:600;color:#d8e7ed}
+.reader-status{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.welcome-card{margin:clamp(55px,12vh,120px) auto 60px}
+.loading{position:fixed;z-index:30;inset:58px 0 62px}
+.error-card{margin:70px auto}
+.toast{z-index:200}
+
+@media(max-width:760px){
+  .topbar{height:52px;padding:0 10px}
+  .brand{font-size:18px;gap:7px}
+  .brand-mark{width:27px;height:27px}
+  .reading-title{width:min(42vw,230px);left:48%}
+  .reading-title strong{font-size:11px}
+  .reading-title span{font-size:9px}
+  .reader-actions{gap:4px}
+  .reader-icon{width:32px;height:32px;border-radius:8px;font-size:16px}
+  .workspace{inset:52px 0 56px}
+  .sidebar{inset:52px auto 56px 0}
+  .reader-drawer-backdrop{inset:52px 0 56px}
+  .reader-bottom{height:56px;gap:12px;padding:0 9px}
+  .page-nav{min-width:88px;height:36px;padding:0 9px;font-size:11px}
+  .counter-label{display:none}
+  .page-counter{min-width:62px}
+  .canvas-area{inset:0;padding:0}
+  .page-wrap{width:100%;max-width:none}
+  .manga-page{box-shadow:none;border-bottom:1px solid #273944}
+  .welcome-card{margin:45px auto}
+}
+
+@media(max-width:420px){
+  .topbar{padding:0 7px}
+  .brand{font-size:16px;gap:5px}
+  .brand-mark{width:24px;height:24px}
+  .reading-title{width:30vw;left:50%}
+  .reading-title span{display:none}
+  .reader-actions{gap:3px}
+  .reader-icon{width:29px;height:29px}
+  .publish-reader-button{display:none}
+  .reader-bottom{gap:7px}
+  .page-nav{min-width:76px;padding:0 7px}
+}
+.page-wrap{width:max-content;min-width:min(100%,850px);max-width:none;align-items:center}
+.manga-page{width:max-content}
+.manga-page canvas{max-width:none}
+
+/* O catálogo continua visível ao fundo enquanto a leitura acontece em uma janela. */
+body.reader-open .catalog-page{display:block!important;filter:blur(3px) brightness(.3);pointer-events:none;user-select:none}
+body.reader-open .app-shell{position:fixed;inset:3vh 3vw;width:94vw;height:94vh;min-height:0;z-index:500;border:1px solid #315365;border-radius:18px;box-shadow:0 30px 100px #000c,0 0 0 1px #72c9f522;overflow:hidden;background:#080e13}
+body.reader-open .topbar,body.reader-open .sidebar,body.reader-open .reader-bottom,body.reader-open .reader-drawer-backdrop,body.reader-open .loading{position:absolute}
+body.reader-open .topbar{border-radius:17px 17px 0 0}
+body.reader-open .reader-bottom{border-radius:0 0 17px 17px}
+body.reader-open .loading{inset:58px 0 62px}
+body.reader-open .reader-drawer-backdrop{inset:58px 0 62px}
+body.reader-open .app-shell:fullscreen{inset:0;width:100%;height:100%;border:0;border-radius:0}
+body.reader-open .app-shell:fullscreen .topbar,body.reader-open .app-shell:fullscreen .reader-bottom{border-radius:0}
+body.reader-open .app-shell{inset:1.5vh 1.5vw;width:97vw;height:97vh;border-radius:20px}
+body.reader-open .canvas-area{padding:0;scrollbar-color:#355264 #091118;scrollbar-width:thin}
+body.reader-open .workspace{inset:58px 0 76px}
+body.reader-open .reader-bottom{height:76px;gap:clamp(18px,4vw,42px);padding:0 20px}
+body.reader-open .page-wrap{min-width:0;max-width:none;width:max-content;margin:0 auto;align-items:center}
+body.reader-open .manga-page{max-width:none}
+.page-nav{position:relative;min-width:150px;height:52px;overflow:hidden;border-color:#3b6378;border-radius:12px;background:linear-gradient(145deg,#18303d,#11212b);color:#e6f8ff;font-size:14px;box-shadow:0 5px 17px #0004;transition:transform .2s ease,background .25s,border-color .25s,box-shadow .25s}
+.page-nav:hover:not(:disabled){transform:translateY(-2px) scale(1.025);border-color:#72d1fb;background:linear-gradient(145deg,#20465a,#142b38);box-shadow:0 9px 26px #43b9ed2b}
+.page-nav:active:not(:disabled){transform:translateY(1px) scale(.98)}
+.page-nav .nav-arrow{font-size:22px;line-height:1;transition:transform .2s ease}
+#prevPage:hover:not(:disabled) .nav-arrow{transform:translateX(-4px)}
+#nextPage:hover:not(:disabled) .nav-arrow{transform:translateX(4px)}
+.manga-page[data-turn="next"]{animation:manga-page-next .32s cubic-bezier(.2,.75,.25,1) both}
+.manga-page[data-turn="previous"]{animation:manga-page-previous .32s cubic-bezier(.2,.75,.25,1) both}
+@keyframes manga-page-next{from{opacity:.45;transform:translateX(24px) scale(.985)}to{opacity:1;transform:translateX(0) scale(1)}}
+@keyframes manga-page-previous{from{opacity:.45;transform:translateX(-24px) scale(.985)}to{opacity:1;transform:translateX(0) scale(1)}}
+.manga-video{position:absolute;inset:0;display:block;width:100%;height:100%;margin:auto;background:#020406;object-fit:contain}
+.anime-player{position:absolute;z-index:5;inset:0;overflow:hidden;background:#020406;isolation:isolate;color:#effaff}
+.anime-player[hidden],.manga-video[hidden],.reader-bottom[hidden]{display:none!important}
+.anime-player .manga-video{z-index:0;touch-action:manipulation;cursor:pointer}
+.player-topline{position:absolute;z-index:2;top:0;left:0;right:0;display:flex;align-items:center;gap:9px;padding:19px 24px 45px;background:linear-gradient(#040a10d9,transparent);pointer-events:none;color:#eaf8ff;font-size:11px;letter-spacing:.09em}
+.player-topline strong{max-width:min(55vw,520px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}
+.player-live-dot{width:7px;height:7px;flex:none;border-radius:50%;background:#73d1fc;box-shadow:0 0 12px #73d1fc}
+.player-topline>span:last-child{margin-left:auto;padding:6px 9px;border:1px solid #a9e8ff40;border-radius:999px;background:#07121b99;color:#c8efff;font-size:9px}
+.player-controls{position:absolute;z-index:3;right:0;bottom:0;left:0;padding:55px 24px 20px;background:linear-gradient(transparent,#03080de8 72%);transition:opacity .2s}
+.player-seek{display:grid;grid-template-columns:auto minmax(60px,1fr) auto;align-items:center;gap:12px;margin-bottom:12px;color:#c0d1db;font-size:10px;font-variant-numeric:tabular-nums}
+.player-seek input{width:100%;height:4px;margin:0;appearance:none;border:0;border-radius:99px;outline:none;background:linear-gradient(to right,#72d4ff var(--seek-progress,0%),#e1f5ff47 var(--seek-progress,0%));cursor:pointer}
+.player-seek input::-webkit-slider-thumb{width:12px;height:12px;appearance:none;border:2px solid #07121a;border-radius:50%;background:#a8e8ff;box-shadow:0 0 0 2px #a8e8ff55}
+.player-seek input::-moz-range-thumb{width:9px;height:9px;border:2px solid #07121a;border-radius:50%;background:#a8e8ff;box-shadow:0 0 0 2px #a8e8ff55}
+.player-control-row{display:flex;align-items:center;justify-content:center;gap:clamp(8px,1.5vw,18px)}
+.player-icon-button,.player-skip-button{display:inline-flex;flex:none;align-items:center;justify-content:center;gap:4px;height:42px;min-width:42px;padding:0 10px;border:1px solid #d7f4ff26;border-radius:12px;background:#101c26c9;color:#eaf8ff;font-size:15px;cursor:pointer;transition:transform .18s,background .18s,border-color .18s}
+.player-icon-button:hover:not(:disabled),.player-skip-button:hover{transform:translateY(-2px);border-color:#7ddaff;background:#173344}
+.player-icon-button:disabled{opacity:.32;cursor:not-allowed}
+.player-main-play{width:48px;height:48px;border:0;border-radius:50%;background:#8cdbff;color:#07121a;font-size:18px;box-shadow:0 5px 20px #48b8e544}
+.player-main-play:hover:not(:disabled){background:#b3ebff}
+.player-skip-button{min-width:52px;font-size:21px}
+.player-skip-button span{font-size:10px;font-weight:800}
+.player-episode-title{max-width:min(31vw,360px);overflow:hidden;color:#b9cbd5;font-size:11px;text-overflow:ellipsis;white-space:nowrap;text-align:center}
+.player-jump-feedback{position:absolute;z-index:2;top:50%;left:50%;padding:17px 21px;transform:translate(-50%,-50%) scale(.8);border:1px solid #c8f1ff4d;border-radius:999px;background:#07121ac9;color:#d9f6ff;font-size:18px;font-weight:800;opacity:0;pointer-events:none}
+.player-jump-feedback.show{animation:player-jump .65s ease both}
+@keyframes player-jump{15%{opacity:1;transform:translate(-50%,-50%) scale(1)}75%{opacity:1}100%{opacity:0;transform:translate(-50%,-62%) scale(1)}}
+.anime-player:fullscreen{background:#020406}
+.anime-player:fullscreen .manga-video{object-fit:contain}
+.player-icon-button:focus-visible,.player-skip-button:focus-visible,.player-seek input:focus-visible{outline:2px solid #a8e8ff;outline-offset:3px}
+body.reader-anime .workspace{bottom:0}
+body.reader-anime .canvas-area{overflow:hidden}
+
+.manga-detail-backdrop{position:fixed;z-index:700;inset:0;display:grid;place-items:center;padding:22px;background:rgba(3,7,11,.78);backdrop-filter:blur(9px);animation:detail-fade-in .2s ease both}
+.manga-detail-backdrop[hidden]{display:none!important}
+.manga-detail-window{width:min(900px,100%);max-height:min(90vh,820px);overflow:auto;border:1px solid #315365;border-radius:18px;background:linear-gradient(145deg,#101b23,#080d12 72%);box-shadow:0 36px 110px #000c;color:#edf7fc;animation:detail-window-in .24s cubic-bezier(.2,.8,.2,1) both}
+.manga-window-bar{height:44px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 15px;border-bottom:1px solid #253b49;color:#83aabd;font-size:10px;font-weight:800;letter-spacing:1.5px}
+.window-dots{display:flex;align-items:center;gap:5px;margin-right:auto}
+.window-dots i{width:8px;height:8px;border-radius:50%;background:#4c879f}.window-dots i:first-child{background:#e36a70}.window-dots i:nth-child(2){background:#e4b45d}.window-dots i:nth-child(3){background:#75bd9a}
+.manga-window-bar .window-dots{margin:0}
+.detail-back-button{padding:7px 11px;border:1px solid #345363;border-radius:8px;background:#14232c;color:#c6dce6;font-size:11px;font-weight:700;white-space:nowrap;cursor:pointer}
+.detail-back-button:hover{background:#203b49;color:white}
+.manga-detail-content{display:grid;grid-template-columns:minmax(230px,.82fr) 1.18fr;min-height:450px}
+.manga-detail-cover-wrap{min-height:450px;max-height:620px;overflow:hidden;background:#0b1319}
+.manga-detail-cover{display:block;width:100%;height:100%;min-height:450px;max-height:620px;object-fit:cover;object-position:center;box-shadow:12px 0 35px #0005}
+.manga-detail-info{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:clamp(26px,5vw,58px)}
+.manga-detail-info .catalog-badge{margin-bottom:16px;background:#45a6d1;color:#071018}
+.manga-detail-info h1{margin:0 0 20px;color:#f4fbff;font:800 clamp(30px,4.3vw,48px)/1.02 Manrope,'DM Sans',sans-serif;letter-spacing:-1.7px}
+.manga-detail-info p{margin:0 0 12px;color:#b1c5cf;font-size:14px;line-height:1.55}
+.manga-detail-info .detail-author{color:#e2f5fc;font-weight:700}
+.manga-detail-info .detail-genre{display:inline-flex;margin-top:4px;padding:7px 12px;border:1px solid #315365;border-radius:999px;background:#12232d;color:#9ddcff;font-size:12px}
+.detail-read-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:20px;padding:13px 20px;border:1px solid #78d4ff;border-radius:9px;background:linear-gradient(135deg,#8cddff,#43a9d5);box-shadow:0 8px 24px #48b8e533;color:#07131a;font-weight:800;cursor:pointer;transition:transform .18s,filter .18s}
+.detail-read-button:hover{transform:translateY(-2px);filter:brightness(1.08)}.detail-read-button:disabled{opacity:.65;cursor:wait;transform:none}
+.detail-add-episodes{display:inline-flex;align-items:center;justify-content:center;margin-top:10px;padding:11px 16px;border:1px solid #35586a;border-radius:9px;background:#11232e;color:#bdeaff;font-size:12px;font-weight:700;cursor:pointer;transition:transform .18s,border-color .18s,background .18s}
+.detail-add-episodes:hover{transform:translateY(-1px);border-color:#69c8f5;background:#18384a}
+.detail-add-episodes:disabled{opacity:.65;cursor:wait}
+.detail-add-episodes[hidden],.episode-update-status[hidden]{display:none!important}
+.episode-update-status{margin-top:10px!important;color:#8de2b5!important;font-size:12px!important}
+@keyframes detail-fade-in{from{opacity:0}to{opacity:1}}
+@keyframes detail-window-in{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:760px){
+  body.reader-open .app-shell{inset:0;width:100%;height:100dvh;border:0;border-radius:0}
+  body.reader-open .topbar,body.reader-open .reader-bottom{border-radius:0}
+  body.reader-open .topbar{height:52px;padding:0 8px}
+  body.reader-open .reader-back{padding:7px 8px;font-size:11px}
+  body.reader-open .workspace{inset:52px 0 66px}
+  body.reader-open .reader-bottom{height:66px;padding:0 8px;gap:clamp(7px,3vw,16px)}
+  body.reader-open .page-nav{min-width:112px;height:50px;padding:0 10px;font-size:13px}
+  body.reader-open .canvas-area{padding:0;touch-action:pan-y}
+  body.reader-open .page-wrap{width:100%;min-width:0}
+  body.reader-open .manga-page{width:max-content!important}
+  body.reader-open .manga-page canvas{display:block;height:auto!important;max-width:none;object-fit:contain}
+  body.reader-open .reading-title{width:min(40vw,220px);left:50%}
+  body.reader-anime .workspace{inset:52px 0 0}
+  .player-topline{padding:16px 14px 40px}
+  .player-controls{padding:48px 12px max(13px,env(safe-area-inset-bottom))}
+  .player-control-row{gap:7px}
+  .player-icon-button,.player-skip-button{height:39px;min-width:38px;padding:0 7px;border-radius:10px}
+  .player-main-play{width:44px;height:44px;min-width:44px}
+  .player-skip-button{min-width:44px}
+  .player-episode-title{max-width:25vw;font-size:9px}
+  .player-seek{gap:8px}
+}
+@media(max-width:420px){
+  body.reader-open .brand>span:last-child{display:none}
+  body.reader-open .brand{gap:0}
+  body.reader-open .reading-title{width:36vw;left:48%}
+  body.reader-open .reader-bottom{gap:5px;padding:0 5px}
+  body.reader-open .page-nav{min-width:104px;height:48px;padding:0 7px;font-size:12px}
+  .player-episode-title{display:none}
+  body.reader-open .page-counter{min-width:52px}
+}
+@media(max-width:650px){
+  .manga-detail-backdrop{padding:12px}
+  .manga-detail-window{max-height:94dvh;border-radius:15px}
+  .manga-detail-content{grid-template-columns:1fr;min-height:0}
+  .manga-detail-cover-wrap{height:min(38dvh,340px);min-height:230px;max-height:340px}
+  .manga-detail-cover{height:100%;min-height:0;max-height:none;object-position:center 35%}
+  .manga-detail-info{padding:22px 24px 26px}
+  .manga-detail-info h1{font-size:32px;margin-bottom:12px}
+  .manga-detail-info p{font-size:13px;margin-bottom:8px}
+  .detail-read-button{margin-top:14px;width:100%}
+  .detail-add-episodes{width:100%}
+}
